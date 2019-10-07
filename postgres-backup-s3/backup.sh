@@ -57,7 +57,7 @@ export AWS_DEFAULT_REGION=$S3_REGION
 export PGPASSWORD=$POSTGRES_PASSWORD
 POSTGRES_HOST_OPTS="-h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER $POSTGRES_EXTRA_OPTS"
 
-if ["${DUMPALL}" = "true" ]; then
+if [ "${DUMPALL}" = "true" ]; then
     echo "Creating dump of whole pg cluster from ${POSTGRES_HOST}..."
     pg_dumpall $POSTGRES_HOST_OPTS | gzip > dump.sql.gz
 else
