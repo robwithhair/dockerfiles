@@ -51,7 +51,7 @@ fi
 
 pg_dump -h postgres -U user > sample_output.sql
 
-DIFF=$(diff sample_sql_file.sql sample_output.sql)
+DIFF=$(diff sample_sql_file.sql sample_output.sql || true)
 
 if [ "$DIFF" != "" ]; then
     echo "Expected output from diff was ''"
