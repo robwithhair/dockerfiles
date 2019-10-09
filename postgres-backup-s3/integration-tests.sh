@@ -49,9 +49,9 @@ if [ "$OUT" != "$EXPECTED" ]; then
     exit 1
 fi
 
-pg_dump -h postgres -U user > sample_output.sql
+pg_dump -h postgres -U user | tail -n +7 > sample_output.sql
 
-DIFF=$(diff sample_sql_file.sql sample_output.sql || true)
+DIFF=$(tail -n +7 sample_sql_file.sql | diff - sample_output.sql || true)
 
 if [ "$DIFF" != "" ]; then
     echo "Expected output from diff was ''"
